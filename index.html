@@ -780,6 +780,8 @@
         <div class="hero-actions">
           <a class="btn btn-primary" href="#projects">View My Projects</a>
           <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          <a class="btn btn-secondary" href="Ziad_Mahmoud_CV.pdf" download="Ziad_Mahmoud_CV.pdf">Download CV</a>
+          <button class="btn btn-secondary view-cv-trigger" type="button">View CV</button>
         </div>
         <div class="hero-social">
           <a class="icon-link" href="https://www.linkedin.com/in/ziad-mahmoud-083310294?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
@@ -1654,7 +1656,7 @@
             <a class="btn btn-secondary" href="https://www.linkedin.com/in/ziad-mahmoud-083310294?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a class="btn btn-secondary" href="https://github.com/ZIADMAHMOUD0" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a class="btn btn-secondary" href="Ziad_Mahmoud_CV.pdf" download="Ziad_Mahmoud_CV.pdf">Download CV</a>
-            <button class="btn btn-secondary" type="button" id="view-cv-btn">View CV</button>
+            <button class="btn btn-secondary view-cv-trigger" type="button">View CV</button>
           </div>
         </div>
         <form class="contact-form reveal" id="contact-form">
@@ -1838,7 +1840,7 @@
   // CV view modal
   var cvModal = document.getElementById('cv-modal');
   var cvClose = document.getElementById('cv-close');
-  var viewCvBtn = document.getElementById('view-cv-btn');
+  var viewCvBtns = Array.prototype.slice.call(document.querySelectorAll('.view-cv-trigger'));
   var cvLastFocused = null;
 
   function openCvModal(){
@@ -1853,7 +1855,7 @@
     document.body.style.overflow = '';
     if(cvLastFocused){ cvLastFocused.focus(); }
   }
-  if(viewCvBtn){ viewCvBtn.addEventListener('click', openCvModal); }
+  viewCvBtns.forEach(function(btn){ btn.addEventListener('click', openCvModal); });
   cvClose.addEventListener('click', closeCvModal);
   cvModal.addEventListener('click', function(e){
     if(e.target === cvModal){ closeCvModal(); }
